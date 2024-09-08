@@ -5,7 +5,7 @@ class Main:
     def __init__(self):
         pass
 
-    
+        
 
 class EnergiaEletrica:
     def __init__(self):
@@ -45,55 +45,59 @@ class Intensidade:
 
 class Frequencia:
     def __init__(self):
-        pass
+        self.frequencia = input("Digite a frequencia: ")
+        self.c = 3*(10**8)
 
     def converterComprimentoDeOnda(self):
-        pass
+        self.cOnda = self.c / self.frequencia
 
     def converterFrenquenciaAngular(self):
-        pass
+        self.fAngular = 2 *pi() * self.frequencia
 
     def converterNumeroDeOnda(self):
-        pass
+        self.nOnda = (2 *pi() * self.frequencia) / self.c
 
 class ComprimentoDeOnda:
     def __init__(self):
-        pass
+        self.cOnda = input("Digite a comprimento de onda: ")
+        self.c = 3*(10**8)
 
     def converterFrenquenciaAngular(self):
-        pass
+        self.fAngular = (2 * pi() * self.c) / self.cOnda
 
     def converterFrequencia(self):
-        pass
+        self.frequencia = self.c / self.cOnda
 
     def converterNumeroDeOnda(self):
-        pass
+        self.nOnda = (2* pi()) / self.cOnda
 
 class NumeroDeOnda:
     def __init__(self):
-        pass
+        self.nOnda = input("Digite um numero de onda: ")
+        self.c = 3*(10**8)
 
     def converterFrequencia(self):
-        pass
+        self.frequencia = (self.nOnda * self.c) / (2* pi()) 
 
     def converterFrenquenciaAngular(self):
-        pass
+        self.fAngular = self.nOnda * self.c
 
     def converterComprimentoDeOnda(self):
-        pass
+        self.cOnda = (2* pi()) / self.nOnda 
 
 class FrequenciaAngular:
     def __init__(self):
-        pass
+        self.fAngular = input("Digite a frequencia angular: ")
+        self.c = 3*(10**8)
 
     def converterFrequencia(self):
-        pass
+        self.frequencia = self.fAngular / (2*pi())
 
     def converterComprimentoDeOnda(self):
-        pass
+        self.cOnda = (2*pi() * self.c) / self.fAngular
 
     def converterNumeroDeOnda(self):
-        pass
+        self.nOnda = self.fAngular / self.c
 
 if __name__ == '__main__':
     pass
