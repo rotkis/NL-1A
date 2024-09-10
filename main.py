@@ -108,11 +108,11 @@ class Frequencia:
         print(f"{self.cOnda:.2e}")  # Notação científica com 3 casas decimais
 
     def converterFrenquenciaAngular(self):
-        self.fAngular = 2 * pi() * self.frequencia
+        self.fAngular = 2 * pi * self.frequencia
         print(f"{self.fAngular:.2e}")  # Notação científica com 3 casas decimais
 
     def converterNumeroDeOnda(self):
-        self.nOnda = (2 * pi() * self.frequencia) / self.c
+        self.nOnda = (2 * pi * self.frequencia) / self.c
         print(f"{self.nOnda:.2e}")  # Notação científica com 3 casas decimais
 
 class ComprimentoDeOnda:
@@ -131,7 +131,7 @@ class ComprimentoDeOnda:
             self.converterNumeroDeOnda()
 
     def converterFrenquenciaAngular(self):
-        self.fAngular = (2 * pi() * self.c) / self.cOnda
+        self.fAngular = (2 * pi * self.c) / self.cOnda
         print(f"{self.fAngular:.2e}")  # Notação científica com 3 casas decimais
 
     def converterFrequencia(self):
@@ -139,7 +139,7 @@ class ComprimentoDeOnda:
         print(f"{self.frequencia:.2e}")  # Notação científica com 3 casas decimais
 
     def converterNumeroDeOnda(self):
-        self.nOnda = (2 * pi()) / self.cOnda
+        self.nOnda = (2 * pi) / self.cOnda
         print(f"{self.nOnda:.2e}")  # Notação científica com 3 casas decimais
 
 class NumeroDeOnda:
@@ -158,7 +158,7 @@ class NumeroDeOnda:
             self.converterComprimentoDeOnda()
 
     def converterFrequencia(self):
-        self.frequencia = (self.nOnda * self.c) / (2 * pi())
+        self.frequencia = (self.nOnda * self.c) / (2 * pi)
         print(f"{self.frequencia:.2e}")  # Notação científica com 3 casas decimais
 
     def converterFrenquenciaAngular(self):
@@ -166,7 +166,7 @@ class NumeroDeOnda:
         print(f"{self.fAngular:.2e}")  # Notação científica com 3 casas decimais
 
     def converterComprimentoDeOnda(self):
-        self.cOnda = (2 * pi()) / self.nOnda
+        self.cOnda = (2 * pi) / self.nOnda
         print(f"{self.cOnda:.2e}")  # Notação científica com 3 casas decimais
 
 class FrequenciaAngular:
@@ -185,11 +185,11 @@ class FrequenciaAngular:
             self.converterComprimentoDeOnda()
 
     def converterFrequencia(self):
-        self.frequencia = self.fAngular / (2 * pi())
+        self.frequencia = self.fAngular / (2 * pi)
         print(f"{self.frequencia:.2e}")  # Notação científica com 3 casas decimais
 
     def converterComprimentoDeOnda(self):
-        self.cOnda = (2 * pi() * self.c) / self.fAngular
+        self.cOnda = (2 * pi * self.c) / self.fAngular
         print(f"{self.cOnda:.2e}")  # Notação científica com 3 casas decimais
 
     def converterNumeroDeOnda(self):
