@@ -2,8 +2,8 @@ from math import *
 
 class Main:
     def __init__(self):
-        print("Selecione o que vc tem: ")
-        classe = input("digite de (0-7)\nEnergia eletrica = 0 \nEnergia magnetica = 1 \nIntensidade = 2 \nFrequencia = 3 \nComprimento de onda = 4 \nNumero de onda = 5 \nfrequencia Angular = 6\n")
+        print("Selecione o que você tem: ")
+        classe = input("Digite de (0-6)\nEnergia elétrica = 0 \nEnergia magnética = 1 \nIntensidade = 2 \nFrequência = 3 \nComprimento de onda = 4 \nNúmero de onda = 5 \nFrequência Angular = 6\n")
         self.troca(classe)
         
     def troca(self, classe):
@@ -26,8 +26,8 @@ class EnergiaEletrica:
     def __init__(self):
         self.c = 3*(10**8)
         self.mi = (4 * 3.14) * (10 ** -7)
-        self.eEletrica = float(input("Digite a energia elétrica:"))
-        classe = input("digite de (0-1)\npara energia magnetica = 0 \npara a intensidade = 1\n")
+        self.eEletrica = float(input("Digite a energia elétrica (em V/m):"))
+        classe = input("Digite de (0-1)\nEnergia magnética = 0 \nIntensidade = 1\n")
         self.selecao(classe)
 
     def selecao(self, classe):
@@ -37,19 +37,19 @@ class EnergiaEletrica:
             self.converterParaIntesidade()
         
     def converterParaEnergiaMag(self):
-        self.eMagnetica = self.c / self.eEletrica
-        print(f"{self.eMagnetica:.2e}")  # Notação científica com 3 casas decimais
+        self.eMagnetica = self.eEletrica / self.c 
+        print(f"Energia Magnética: {self.eMagnetica:.2e} T")  # Notação científica com 3 casas decimais
 
     def converterParaIntesidade(self):
         self.Intesidade = (self.eEletrica ** 2) / (2 * self.mi * self.c)
-        print(f"{self.Intesidade:.2e}")  # Notação científica com 3 casas decimais
+        print(f"Intensidade: {self.Intesidade:.2e} W/m²")  # Notação científica com 3 casas decimais
 
 class EnergiaMagnetica:
     def __init__(self):
         self.c = 3*(10**8)
         self.mi = (4 * 3.14) * (10 ** -7)
-        self.eMagnetica = float(input("Digite a energia magnética: "))
-        classe = input("digite de (0-1)\npara energia eletrica = 0 \npara a intensidade = 1\n")
+        self.eMagnetica = float(input("Digite a energia magnética (em T): "))
+        classe = input("Digite de (0-1)\nEnergia elétrica = 0 \nIntensidade = 1\n")
         self.selecao(classe)
 
     def selecao(self, classe):
@@ -60,18 +60,18 @@ class EnergiaMagnetica:
 
     def converterParaEnergiaEletrica(self):
         self.eEletrica = self.c * self.eMagnetica
-        print(f"{self.eEletrica:.2e}")  # Notação científica com 3 casas decimais
+        print(f"Energia Elétrica: {self.eEletrica:.2e} V/m")  # Notação científica com 3 casas decimais
 
     def converterParaIntesidade(self):
         self.Intesidade = (self.c * (self.eMagnetica ** 2)) / (2 * self.mi)
-        print(f"{self.Intesidade:.2e}")  # Notação científica com 3 casas decimais
+        print(f"Intensidade: {self.Intesidade:.2e} W/m²")  # Notação científica com 3 casas decimais
 
 class Intensidade:
     def __init__(self):
         self.c = 3*(10**8)
-        self.mi = (4 * 3.14) * (10 ** -7)
-        self.intensidade = float(input("Digite a Intensidade: "))
-        classe = input("digite de (0-1)\npara energia eletrica = 0 \npara a energia magnetica = 1\n")
+        self.mi = (4 * pi) * (10 ** (-7))
+        self.intensidade = float(input("Digite a Intensidade (em W/m²): "))
+        classe = input("Digite de (0-1)\nEnergia elétrica = 0 \nEnergia magnética = 1\n")
         self.selecao(classe)
         
     def selecao(self, classe):
@@ -81,18 +81,18 @@ class Intensidade:
             self.converterParaEnergiaMag()
 
     def converterParaEnergiaEletrica(self):
-        self.eEletrica = sqrt(2 * self.mi * self.c)
-        print(f"{self.eEletrica:.2e}")  # Notação científica com 3 casas decimais
+        self.eEletrica = sqrt(self.intensidade * 2 * self.mi * self.c)
+        print(f"Energia Elétrica: {self.eEletrica:.2e} V/m")  # Notação científica com 3 casas decimais
 
     def converterParaEnergiaMag(self):
-        self.eMagnetica = sqrt((2 * self.mi) / self.c)
-        print(f"{self.eMagnetica:.2e}")  # Notação científica com 3 casas decimais
+        self.eMagnetica = sqrt((self.intensidade * 2 * self.mi) / self.c)
+        print(f"Energia Magnética: {self.eMagnetica:.2e} T")  # Notação científica com 3 casas decimais
 
 class Frequencia:
     def __init__(self):
         self.c = 3*(10**8)
-        self.frequencia = float(input("Digite a frequencia: "))
-        classe = input("digite de (0-1)\npara Comprimento de onda = 0 \npara frequencia angular = 1\npara numero de onda = 2\n")
+        self.frequencia = float(input("Digite a frequência (em Hz): "))
+        classe = input("Digite de (0-2)\nComprimento de onda = 0 \nFrequência angular = 1\nNúmero de onda = 2\n")
         self.selecao(classe)
 
     def selecao(self, classe):
@@ -105,21 +105,21 @@ class Frequencia:
 
     def converterComprimentoDeOnda(self):
         self.cOnda = self.c / self.frequencia
-        print(f"{self.cOnda:.2e}")  # Notação científica com 3 casas decimais
+        print(f"Comprimento de Onda: {self.cOnda:.2e} m")  # Notação científica com 3 casas decimais
 
     def converterFrenquenciaAngular(self):
-        self.fAngular = 2 * pi() * self.frequencia
-        print(f"{self.fAngular:.2e}")  # Notação científica com 3 casas decimais
+        self.fAngular = 2 * pi * self.frequencia
+        print(f"Frequência Angular: {self.fAngular:.2e} rad/s")  # Notação científica com 3 casas decimais
 
     def converterNumeroDeOnda(self):
-        self.nOnda = (2 * pi() * self.frequencia) / self.c
-        print(f"{self.nOnda:.2e}")  # Notação científica com 3 casas decimais
+        self.nOnda = (2 * pi * self.frequencia) / self.c
+        print(f"Número de Onda: {self.nOnda:.2e} rad/m")  # Notação científica com 3 casas decimais
 
 class ComprimentoDeOnda:
     def __init__(self):
         self.c = 3*(10**8)
-        self.cOnda = float(input("Digite o comprimento de onda: "))
-        classe = input("digite de (0-1)\npara frequencia angular = 0 \npara frequencia = 1\npara numero de onda = 2\n")
+        self.cOnda = float(input("Digite o comprimento de onda (em m): "))
+        classe = input("Digite de (0-2)\nFrequência angular = 0 \nFrequência = 1\nNúmero de onda = 2\n")
         self.selecao(classe)
 
     def selecao(self, classe):
@@ -131,22 +131,22 @@ class ComprimentoDeOnda:
             self.converterNumeroDeOnda()
 
     def converterFrenquenciaAngular(self):
-        self.fAngular = (2 * pi() * self.c) / self.cOnda
-        print(f"{self.fAngular:.2e}")  # Notação científica com 3 casas decimais
+        self.fAngular = (2 * pi * self.c) / self.cOnda
+        print(f"Frequência Angular: {self.fAngular:.2e} rad/s")  # Notação científica com 3 casas decimais
 
     def converterFrequencia(self):
         self.frequencia = self.c / self.cOnda
-        print(f"{self.frequencia:.2e}")  # Notação científica com 3 casas decimais
+        print(f"Frequência: {self.frequencia:.2e} Hz")  # Notação científica com 3 casas decimais
 
     def converterNumeroDeOnda(self):
-        self.nOnda = (2 * pi()) / self.cOnda
-        print(f"{self.nOnda:.2e}")  # Notação científica com 3 casas decimais
+        self.nOnda = (2 * pi) / self.cOnda
+        print(f"Número de Onda: {self.nOnda:.2e} rad/m")  # Notação científica com 3 casas decimais
 
 class NumeroDeOnda:
     def __init__(self):
         self.c = 3*(10**8)
-        self.nOnda = float(input("Digite o número de onda: "))
-        classe = input("digite de (0-1)\npara frequencia angular = 0 \npara frequencia = 1\npara comprimento de onda = 2\n")
+        self.nOnda = float(input("Digite o número de onda (em rad/m): "))
+        classe = input("Digite de (0-2)\nFrequência angular = 0 \nFrequência = 1\nComprimento de onda = 2\n")
         self.selecao(classe)
 
     def selecao(self, classe):
@@ -158,22 +158,22 @@ class NumeroDeOnda:
             self.converterComprimentoDeOnda()
 
     def converterFrequencia(self):
-        self.frequencia = (self.nOnda * self.c) / (2 * pi())
-        print(f"{self.frequencia:.2e}")  # Notação científica com 3 casas decimais
+        self.frequencia = (self.nOnda * self.c) / (2 * pi)
+        print(f"Frequência: {self.frequencia:.2e} Hz")  # Notação científica com 3 casas decimais
 
     def converterFrenquenciaAngular(self):
         self.fAngular = self.nOnda * self.c
-        print(f"{self.fAngular:.2e}")  # Notação científica com 3 casas decimais
+        print(f"Frequência Angular: {self.fAngular:.2e} rad/s")  # Notação científica com 3 casas decimais
 
     def converterComprimentoDeOnda(self):
-        self.cOnda = (2 * pi()) / self.nOnda
-        print(f"{self.cOnda:.2e}")  # Notação científica com 3 casas decimais
+        self.cOnda = (2 * pi) / self.nOnda
+        print(f"Comprimento de Onda: {self.cOnda:.2e} m")  # Notação científica com 3 casas decimais
 
 class FrequenciaAngular:
     def __init__(self):
         self.c = 3*(10**8)
-        self.fAngular = float(input("Digite a frequencia angular: "))
-        classe = input("digite de (0-1)\npara numero de onda = 0 \npara frequencia = 1\npara comprimento de onda = 2\n")
+        self.fAngular = float(input("Digite a frequência angular (em rad/s): "))
+        classe = input("Digite de (0-2)\nNúmero de onda = 0 \nFrequência = 1\nComprimento de onda = 2\n")
         self.selecao(classe)
 
     def selecao(self, classe):
@@ -185,16 +185,16 @@ class FrequenciaAngular:
             self.converterComprimentoDeOnda()
 
     def converterFrequencia(self):
-        self.frequencia = self.fAngular / (2 * pi())
-        print(f"{self.frequencia:.2e}")  # Notação científica com 3 casas decimais
+        self.frequencia = self.fAngular / (2 * pi)
+        print(f"Frequência: {self.frequencia:.2e} Hz")  # Notação científica com 3 casas decimais
 
     def converterComprimentoDeOnda(self):
-        self.cOnda = (2 * pi() * self.c) / self.fAngular
-        print(f"{self.cOnda:.2e}")  # Notação científica com 3 casas decimais
+        self.cOnda = (2 * pi * self.c) / self.fAngular
+        print(f"Comprimento de Onda: {self.cOnda:.2e} m")  # Notação científica com 3 casas decimais
 
     def converterNumeroDeOnda(self):
         self.nOnda = self.fAngular / self.c
-        print(f"{self.nOnda:.2e}")  # Notação científica com 3 casas decimais
+        print(f"Número de Onda: {self.nOnda:.2e} rad/m")  # Notação científica com 3 casas decimais
 
 if __name__ == '__main__':
     app = Main()
